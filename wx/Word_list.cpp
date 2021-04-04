@@ -32,6 +32,7 @@ void Word_list::show_list(){
 
 
   void Word_list::load_list(std::string filename){
+    
     std::fstream f_s; 
     
     f_s.open(filename, std::ios::in);

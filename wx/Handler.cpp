@@ -1,7 +1,10 @@
 #include "Handler.h"
 
 Handler::Handler(){
+
+
   Handler::wl = new Word_list("words.txt");
+  std::cout<<"WordList setup !done \n"; 
   Handler::noCorrect = 0;
   Handler::total = 0; 
   Handler::swe_ger = true; 
@@ -20,7 +23,9 @@ void Handler::set_swe_ger(bool b){
   Handler::swe_ger = b;
 }
 
+
 bool Handler::check(std::string in){
+
 
   if (swe_ger){
     return Handler::current->check(in, true);
@@ -30,10 +35,32 @@ bool Handler::check(std::string in){
 
 }
 
-
+bool Handler::checkNoun(std::string gen,std::string middle,  std::string ending){
+  if (Handler::current->getWc().compare("n") == 0){
+    std::cout<<"Error! checkNoun without noun"; 
+    return false; 
+  } 
+  
+  if (!(Handler::check(middle))){
+    return false;
+  }  else {
+    if (!swe_ger){
+    return Handler::check(middle);
+  }
+  
+  if (swe_ger){
+    return Handler::current->Word::check(gen, ending, true);
+  } else{
+    return Handler::current->Word::check(gen, ending, false);
+  }
+  
+  
+  }
+}
 
 
 std::string Handler::getGer(){
+  
   return current->get_ger();
 }
 
@@ -42,6 +69,8 @@ std::string Handler::getSwe(){
 }
 
 int Handler::getTotal(){
+
+
   return Handler::total;
 }
 
@@ -59,6 +88,9 @@ void Handler::increaseCorrect(){
 void Handler::reset(){
   Handler::total =0 ;
   Handler::noCorrect =0;
+}
+bool Handler::sweGer(){
+  return swe_ger;
 }
 
 

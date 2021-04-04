@@ -18,14 +18,16 @@ public:
   void show();
   void set_swe_ger(bool b);
   bool check(std::string in);
-
+  bool checkNoun(std::string gen, std::string middle, std::string end); 
+  
   std::string getGer();
   std::string getSwe();
   int getTotal();
   int getCorrect();
   void increaseTotal();
   void increaseCorrect(); 
-  void reset(); 
+  void reset();
+  bool sweGer();
 };
 
 

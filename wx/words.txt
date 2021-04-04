@@ -1,0 +1,6 @@
+n:f:Katt:Katze:-n
+n:n:Hus:Haus:-er+
+p:Jag:Ich
+p:Han:er
+n:n:Bok:Buch:-er+
+:

@@ -9,10 +9,13 @@ EVT_TEXT_ENTER(10002, cMain::submit)
 
 
 
-wxEND_EVENT_TABLE()
 
 
-cMain::cMain(): wxFrame(nullptr,wxID_ANY, "window", wxPoint(30,30),wxSize(800,600)){
+ wxEND_EVENT_TABLE()
+
+
+cMain::cMain() : wxFrame(nullptr,wxID_ANY, "window", wxPoint(30,30),wxSize(800,600)){
+  
   std::cout<<"Constructor \n"; 
   cMain::handler = new Handler();
   std::cout<<"Constructor setup done \n"; 
@@ -62,14 +65,32 @@ void cMain::onClick(wxCommandEvent &evt){
 
 
 void cMain::submit(wxCommandEvent &evt){
+  std::string ch = std::string((ans->GetValue()));
+  bool correct = false; 
+
+  if (!readyToCommit()){
+    return;
+  }
 
   
-  std::string ch = std::string((ans->GetValue()));
-  bool correct = handler->check(ch);
+  if(cMain::handler->isNoun()){
+
+    
+    submitNoun();
+  }
+
+  else if (cMain::handler->isVerb()){
+      std::cout<<"Verb not yes implemented";
+       correct = handler->check(ch);
+      
+    } else {
+        correct = handler->check(ch);
+
+    }
   
   if (correct){
     cMain::handler->increaseTotal();
-    cMian:handler->increaseCorrect();
+    cMain:handler->increaseCorrect();
     info->Append("Correct!");
   }else{
     info->Append("Wrong!");
@@ -77,7 +98,8 @@ void cMain::submit(wxCommandEvent &evt){
   }
    cMain::update();
    cMain::updateScreen();
-  evt.Skip(); 
+  evt.Skip();
+    
 }
 
 void cMain::update(){
@@ -141,6 +163,38 @@ void cMain::setLanguage(){
     
     
   }
+}
+
+
+  bool cMain::submitNoun(){
+
+    std::string beg = std::string((ans->GetValue()));
+    std::string main = std::string((ans->GetValue()));
+    std::string end = std::string((ans->GetValue()));
+    
+   
+
+
+    
+    
+    return handler->check(beg,main,end);
+    
+
+
+  }
+
+bool cMain::readyToCommit(){
+  std::string beg = std::string((article->GetValue()));
+  std::string mn = std::string((ans->GetValue()));
+  std::string end = std::string((ending->GetValue()));
+  std::string pret = std::string((preteritum->GetValue()));
+  std::string pp = std::string((perfektP->GetValue()));
+
+ 
+  return !(beg.size()<1||mn.size()<1||end.size()<1||pret.size()<1||pp.size()<1);
+ 
+ 
+    
 }
 
 

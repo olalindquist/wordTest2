@@ -19,6 +19,7 @@ class Word {
 
   bool check(std::string in, bool swe_ger);
   bool isNoun();
+  bool isVerb();
   bool check(std::string gen, std::string end, bool swe_ger);
  
 

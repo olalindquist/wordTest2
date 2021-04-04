@@ -1,4 +1,5 @@
 #pragma once
+
 #include <stdlib.h>
 #include <time.h>  
 #include "Word_list.h"
@@ -6,13 +7,13 @@
 #include <wx/wxprec.h>
 #ifndef WX_PRECOMP
 #include <wx/wx.h>
-
 #endif
 
 class cMain : public wxFrame{
   
 public:
   cMain ();
+  
   Handler* handler = nullptr; 
 
   wxButton* button1 = nullptr;
@@ -24,8 +25,6 @@ public:
   wxTextCtrl* ending = nullptr;
   wxTextCtrl* preteritum = nullptr;
   wxTextCtrl* perfektP = nullptr;
-
-
 
 
   wxListBox* info    = nullptr;
@@ -41,6 +40,10 @@ public:
   void clearAll(wxCommandEvent &evt);
   void updateScreen();
   void setLanguage();
+  bool submitNoun();
+  bool readyToCommit();
+  
+  
 
   wxDECLARE_EVENT_TABLE();
 

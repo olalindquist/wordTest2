@@ -35,7 +35,7 @@ bool Handler::check(std::string in){
 
 }
 
-bool Handler::checkNoun(std::string gen,std::string middle,  std::string ending){
+bool Handler::check(std::string gen,std::string middle,  std::string ending){
   if (Handler::current->getWc().compare("n") == 0){
     std::cout<<"Error! checkNoun without noun"; 
     return false; 
@@ -93,5 +93,9 @@ bool Handler::sweGer(){
   return swe_ger;
 }
 
-
-
+bool Handler::isNoun(){
+  return current->isNoun(); 
+}
+bool Handler::isVerb(){
+  return current->isVerb(); 
+}

@@ -48,6 +48,10 @@ bool Word::check(std::string in, bool swe_ger){
     return false; 
   }
 
+  bool Word::isVerb(){
+    return false; 
+  }
+
 bool Word::check(std::string gen, std::string end, bool swe_ger){
    if (swe_ger){
     

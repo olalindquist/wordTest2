@@ -42,7 +42,7 @@ public:
   void setLanguage();
   bool submitNoun();
   bool readyToCommit();
-  
+  void inactivateAll(); 
   
 
   wxDECLARE_EVENT_TABLE();

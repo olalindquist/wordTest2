@@ -45,6 +45,7 @@ bool Word::check(std::string in, bool swe_ger){
 //Noun
 
   bool Word::isNoun(){
+    std::cout<<"Noun = False\n";
     return false; 
   }
 

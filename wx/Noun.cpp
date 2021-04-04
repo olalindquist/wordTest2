@@ -15,14 +15,12 @@ std::string Noun::get_ending(){
 std::string Noun::get_genus(){
   return genus;
 }
-
-
     
-
-   bool Noun::isNoun(){
+bool Noun::isNoun(){
+  std::cout<<"Noun == true \n";
      return true; 
    
-  }
+}
  
 
 

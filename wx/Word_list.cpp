@@ -82,7 +82,7 @@ void Word_list::make_noun(std::vector<std::string> parts){
     std::string swe = parts[2];
     std::string ger= parts[3];
     std::string end= parts[4];
-
+    
     
     Word_list::word_list.push_back(new Noun(genus,swe,ger,end));
 

@@ -80,7 +80,7 @@ void cMain::submit(wxCommandEvent &evt){
   }
 
   else if (cMain::handler->isVerb()){
-      std::cout<<"Verb not yes implemented";
+      std::cout<<"Verb not yet implemented";
        correct = handler->check(ch);
       
     } else {
@@ -110,28 +110,59 @@ void cMain::update(){
 }
 
 void cMain::clearAll(wxCommandEvent &evt){
-  
+
+  cMain::handler->reset(); 
   cMain::handler->setup();
-  cMain::handler->reset();
-  cMain::updateScreen();
+  cMain::updateScreen();  
+  
   evt.Skip();
 }
 
 void cMain::updateScreen(){
+     std::cout<<"Screen Update! \n";
+     cMain::inactivateAll();
+  
+     ans->SetEditable(true);
+     ans->SetFocus();
+     ans->Clear();
   
   if (handler->sweGer()){
-  
+
+    question->SetValue(cMain::handler->getSwe());
+	
+    if (handler->isNoun()){
+      std::cout<<"Is a Noun\n"; 
+      article -> SetEditable(true);
+      ending -> SetEditable(true);   
+      article->Clear();
+      ending->Clear();
+
+      article->SetFocus();
+    }
+    if (handler->isVerb()){
+      preteritum-> SetEditable(true);
+      perfektP -> SetEditable(true); 
+      preteritum ->Clear();
+      perfektP ->Clear(); 
+
+    }
+
     //ans->SetValue(cMain::handler->getGer());
-   question->SetValue(cMain::handler->getSwe());
+
 
   } else {
     
-   question->SetValue(cMain::handler->getGer());
-   //ans->SetValue(cMain::handler->getSwe());
+    question->SetValue(cMain::handler->getGer());
+    //ans->SetValue(cMain::handler->getSwe());
 
   }
- 
-  ans->Clear(); 
+  
+
+
+  
+
+          
+    
   std::string score =  std::to_string(handler->getCorrect());
   std::string total =  std::to_string(handler->getTotal());
   
@@ -140,7 +171,7 @@ void cMain::updateScreen(){
   
   info->Clear();
   info->Insert(infoText,0);
-  ans->SetFocus();
+  
 }
 
 void cMain::setLanguage(){
@@ -197,6 +228,24 @@ bool cMain::readyToCommit(){
     
 }
 
+void cMain::inactivateAll(){
+
+  question->SetValue("***");
+  ans->SetValue("***");
+  ending->SetValue("***");
+  preteritum->SetValue("***");
+  perfektP->SetValue("***");
+ 
+  article->SetEditable(false);
+  ans->SetEditable(false);
+  ending->SetEditable(false);
+  preteritum->SetEditable(false);
+  perfektP->SetEditable(false);
+      
+  
+     
+
+}
 
 
 

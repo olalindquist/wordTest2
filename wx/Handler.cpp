@@ -61,11 +61,11 @@ bool Handler::check(std::string gen,std::string middle,  std::string ending){
 
 std::string Handler::getGer(){
   
-  return current->get_ger();
+  return Handler::current->get_ger();
 }
 
 std::string Handler::getSwe(){
- return current->get_swe();
+  return Handler::current->get_swe();
 }
 
 int Handler::getTotal(){
@@ -94,8 +94,9 @@ bool Handler::sweGer(){
 }
 
 bool Handler::isNoun(){
-  return current->isNoun(); 
+
+  return Handler::current->isNoun(); 
 }
 bool Handler::isVerb(){
-  return current->isVerb(); 
+  return Handler::current->isVerb(); 
 }

@@ -77,13 +77,14 @@ void Word_list::makeWord(std::string in){
 
 void Word_list::make_noun(std::vector<std::string> parts){
 
+
     std::string wc = parts[0];
     std::string genus= parts[1];
     std::string swe = parts[2];
     std::string ger= parts[3];
     std::string end= parts[4];
     
-    
+    std::cout<<"Making a noun "<<swe; 
     Word_list::word_list.push_back(new Noun(genus,swe,ger,end));
 
 

@@ -2,7 +2,7 @@
 #include <string>
 #include "Word.h"
 #include "Noun.h"
-
+#include <memory>
 #include <bits/stdc++.h>
 #include <iostream>
 #include <fstream>

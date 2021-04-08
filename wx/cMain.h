@@ -4,6 +4,8 @@
 #include <time.h>  
 #include "Word_list.h"
 #include "Handler.h"
+#include "Word.h"
+#include "Noun.h"
 #include <wx/wxprec.h>
 #ifndef WX_PRECOMP
 #include <wx/wx.h>
@@ -34,14 +36,24 @@ public:
   wxRadioButton* radioButton = nullptr;
 
   
-  void onClick(wxCommandEvent &evt);
+  //Bonus button
+  //void onClick(wxCommandEvent &evt);
+
+  // SubmitButton
   void submit (wxCommandEvent &evt);
+  // Update evertything.
   void update();
+  //Clear score and get new word.
   void clearAll(wxCommandEvent &evt);
+  //Set upp correct fields for correct words
   void updateScreen();
+  //Check radiobuttons and set swe_ger to true or false. 
   void setLanguage();
+  // If its a Noun
   bool submitNoun();
+  // Check no fields length <1
   bool readyToCommit();
+  // Locks all but ans field
   void inactivateAll(); 
   
 

@@ -54,15 +54,6 @@ cMain::cMain() : wxFrame(nullptr,wxID_ANY, "window", wxPoint(30,30),wxSize(800,6
 }
 
 
-void cMain::onClick(wxCommandEvent &evt){
-
-   question->SetValue(cMain::handler->getGer());
-   ans->SetValue(cMain::handler->getSwe());
-
-
-   evt.Skip(); 
-}
-
 
 void cMain::submit(wxCommandEvent &evt){
   std::string ch = std::string((ans->GetValue()));
@@ -106,7 +97,7 @@ void cMain::update(){
   
   setLanguage(); 
   cMain::handler->setup();
- 
+   cMain::updateScreen();  
 }
 
 void cMain::clearAll(wxCommandEvent &evt){

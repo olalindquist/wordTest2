@@ -44,7 +44,6 @@ void Word_list::show_list(){
       while (getline(f_s, temp)){
 	std::cout<<"read : "<<temp<<'\n';	
 	if(!(temp.at(0)==':')){
-
 	  makeWord(temp);
 	} else {
 	  break ;
@@ -70,6 +69,8 @@ void Word_list::makeWord(std::string in){
     {
   case 'n': make_noun(tokens);
     break;
+    case'v':makeVerb(tokens);
+      break;
     default: make_word(tokens);
   }
 
@@ -79,16 +80,45 @@ void Word_list::make_noun(std::vector<std::string> parts){
 
 
     std::string wc = parts[0];
-    std::string genus= parts[1];
+    std::string article= parts[1];
     std::string swe = parts[2];
     std::string ger= parts[3];
     std::string end= parts[4];
     
+    if (article.compare("m") ==0){
+	article ="Der";
+      }    
+
+    if (article.compare("f")==0);{
+	article ="Die";
+      }
+
+    if (article.compare("n")==0){
+	article ="Das";
+      }
+	  
     std::cout<<"Making a noun "<<swe; 
-    Word_list::word_list.push_back(new Noun(genus,swe,ger,end));
-
-
+    Word_list::word_list.push_back(new Word(wc,swe,ger,article,end));
 }
+
+
+void Word_list::makeVerb(std::vector<std::string> parts){
+    
+    std::string wc = parts[0];
+    std::string swe = parts[1];
+    std::string ger = parts[2];
+    std::string preteritum= parts[3];
+    std::string perfektP = parts[4];
+
+
+    std::cout<<"make verb" <<swe<<ger<<preteritum<<perfektP<<'\n';
+    //True or false just to separae constructors
+    Word_list::word_list.push_back(new Word(true,wc,swe,ger,preteritum, perfektP));
+
+  }
+
+
+
 
   void Word_list::make_word(std::vector<std::string> parts){
   
@@ -98,7 +128,6 @@ void Word_list::make_noun(std::vector<std::string> parts){
     
     Word_list::word_list.push_back(new Word(wc,swe,ger));
     
-
 
   }
 

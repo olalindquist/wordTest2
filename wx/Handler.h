@@ -1,7 +1,7 @@
 #pragma once
 
 #include "Word_list.h"
-
+#include <vector>
 
 class Handler
 {
@@ -11,6 +11,9 @@ class Handler
   bool swe_ger;
   int noCorrect;
   int total;
+  std::vector <std::string>* wordParts;
+
+  
   
 public:
   Handler();
@@ -30,6 +33,16 @@ public:
   bool sweGer();
   bool isNoun();
   bool isVerb();
+  
+
+
+
+  std::string getArticle();
+  std::string getEnding();
+  std::string getPreteritum();
+  std::string getPerfectP();
+
+
 };
 
 

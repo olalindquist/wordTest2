@@ -15,8 +15,8 @@ class Word_list{
   void load_list(std::string filename);
   void makeWord(std::string in);
   void make_noun(std::vector<std::string> parts);
+  void makeVerb(std::vector<std::string> parts);
   void make_word(std::vector<std::string> parts);
-
 
   
 public:

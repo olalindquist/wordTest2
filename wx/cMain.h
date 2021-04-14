@@ -9,6 +9,8 @@
 #include <wx/wxprec.h>
 #ifndef WX_PRECOMP
 #include <wx/wx.h>
+#include <wx/string.h>
+
 #endif
 
 class cMain : public wxFrame{
@@ -28,13 +30,14 @@ public:
   wxTextCtrl* preteritum = nullptr;
   wxTextCtrl* perfektP = nullptr;
 
-
   wxListBox* info    = nullptr;
 
   wxArrayString choices;
   wxRadioBox* box = nullptr;
   wxRadioButton* radioButton = nullptr;
 
+  wxStaticText* label1 = nullptr;
+  
   
   //Bonus button
   //void onClick(wxCommandEvent &evt);
@@ -52,7 +55,7 @@ public:
   // If its a Noun
   bool submitNoun();
   // Check no fields length <1
-  bool readyToCommit();
+  bool readyToCommit(std::string mn);
   // Locks all but ans field
   void inactivateAll(); 
   
